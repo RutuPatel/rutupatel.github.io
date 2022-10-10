@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGlobalContext } from '../../helper/GlobalContext'
+import { useGlobalContext } from '../../contexts/GlobalContext'
 
 const Preloader = () => {
 	

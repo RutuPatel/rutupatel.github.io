@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import line1 from '../../../assets/img/lines/11.png'
 import line2 from '../../../assets/img/lines/12.png'
 
-import services from '../../../helper/serviceHelper'
+import services from '../../../helpers/serviceHelper'
 
 
 function Service(props) {
@@ -25,8 +25,8 @@ function Service(props) {
                                 <div className="icon">
                                     <i className={item.icon}></i>
                                 </div>
-                                <h3><Link to={item.url}>{item.title}</Link></h3>
-                                <p>{item.text}</p>
+                                <h3><Link to={item.url}>{item.name}</Link></h3>
+                                <p>{item.description}</p>
                                 <Link to={item.url} className="service-link">
                                     <i className="fal fa-long-arrow-right" />
                                 </Link>

@@ -1,19 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import About from './About'
 import Advancedtab from './Advancedtab'
-import Service from './Service'
-import Testimonials from './Testimonials'
+// import Testimonials from './Testimonials'
+import Whyus from '../home/Whyus';
 import Video from './Video'
+import Cta from './Cta';
 
 class Content extends Component {
     render() {
         return (
             <Fragment>
                 <About />
-                <Service />
                 <Advancedtab />
                 <Video />
-                <Testimonials />
+                {/* <Testimonials /> */}
+                <Whyus/>
+                <Cta/>
             </Fragment>
         );
     }

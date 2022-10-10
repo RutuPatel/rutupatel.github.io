@@ -1,10 +1,10 @@
 import React from 'react'
 import Sidebar from '../../layouts/Servicesidebar'
-import servicebanner from '../../../assets/img/details/service-01.jpg'
-import servicesmallbanner from '../../../assets/img/details/service-02.jpg'
-import { useServiceContext } from '../../../helper/ServiceContext';
+import servicebanner from '../../../assets/img/portfoliodetail/service-01.jpg'
+import servicesmallbanner from '../../../assets/img/portfoliodetail/service-02.jpg'
+import { useServiceContext } from '../../../contexts/ServiceContext';
 
-function Servicedetails(props) {
+const Servicedetails = () => {
     const { service } = useServiceContext()
     return (
         <section className="service-details section-gap">
@@ -16,7 +16,7 @@ function Servicedetails(props) {
                             <div className="main-thumb mb-40">
                                 <img src={servicebanner} alt="" />
                             </div>
-                            <h2 className="title">{service.title}</h2>
+                            <h2 className="title">{service.name}</h2>
                             <p>
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
                                 laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi

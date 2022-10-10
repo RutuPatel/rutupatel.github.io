@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'
-import services from "../../helper/serviceHelper"
+import services from "../../helpers/serviceHelper"
 
 const getService = (parentId) => {
     let generatedService = []
@@ -8,7 +8,7 @@ const getService = (parentId) => {
         generatedService.push({
             id: parseInt(parentId.toString() + service.id.toString()),
             link: service.url,
-            linkText: service.title
+            linkText: service.name
         })
     }
     return generatedService

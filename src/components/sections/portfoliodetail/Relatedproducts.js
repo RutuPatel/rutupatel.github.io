@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { projects } from "../../../helper/projectHelper"
+import { projects } from "../../../helpers/projectHelper"
 import Slider from 'react-slick'
 
 const Relatedproducts = () => {
@@ -42,10 +42,10 @@ const Relatedproducts = () => {
         let filteredProjects = projects.filter((project) => project.category.includes(currentProject.category[0]))
         filteredProjects = filteredProjects.filter(item => item.id !== currentProject.id)
         setRelatedProjects(filteredProjects)
-    }, [projectName, relatedProjects])
+    }, [projectName])
 
     const renderRelatedProjects = relatedProjects.map((item, i) => (
-        <div className="col">
+        <div key={i} className="col">
             <div key={i} className="project-box">
                 <div className="project-thumb">
                     <div className="thumb bg-img-c" style={{ backgroundImage: "url(" + item.image + ")" }} />

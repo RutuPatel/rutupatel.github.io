@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import Breadcrumbs from '../layouts/Breadcrumbs'
-import Counter from '../sections/hometwo/Counter'
+import Content from '../sections/statistics/Content';
 
 const Statistics = () => {
     return (
@@ -16,14 +16,8 @@ const Statistics = () => {
                 />
             </Helmet>
             <Header />
-            <Breadcrumbs pagename={"about"} />
-            <section className="client-section">
-                <div className="container">
-                    <div className="client-slider section-gap">
-                        <Counter />
-                    </div>
-                </div>
-            </section>
+            <Breadcrumbs pagename={"statistics"} />
+            <Content/>
             <Footer />
         </Fragment>
     )

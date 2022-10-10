@@ -1,27 +1,31 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
 
-import testimonial from '../../../assets/img/testimonial/testimonial.png'
-import testimonialauthor1 from '../../../assets/img/testimonial/author-1.png'
-import testimonialauthor2 from '../../../assets/img/testimonial/author-2.png'
-import testimonialauthor3 from '../../../assets/img/testimonial/author-3.png'
+import quote from '../../../assets/img/icons/quote.png'
+import author1 from '../../../assets/img/testimonial/author-1.png'
+import author2 from '../../../assets/img/testimonial/author-2.png'
+import author3 from '../../../assets/img/testimonial/author-3.png'
 
 const testimonialslide = [
-    { img: testimonialauthor1, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'On the other hand we denounce with righteou indg ation and dislike men who are so beguiled and demoraliz ed by the charms of pleasure of the moment /n the moment' },
-    { img: testimonialauthor2, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'On the other hand we denounce with righteou indg ation and dislike men who are so beguiled and demoraliz ed by the charms of pleasure of the moment /n the moment' },
-    { img: testimonialauthor3, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'On the other hand we denounce with righteou indg ation and dislike men who are so beguiled and demoraliz ed by the charms of pleasure of the moment /n the moment' },
+    { img: author1, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'Sedut perspiciatis unde omniiste natus errorsit voluptatem accusant doloremque laudantium, totam rem aperiam, eaque ipsa quae ab ilinventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut' },
+    { img: author2, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'Sedut perspiciatis unde omniiste natus errorsit voluptatem accusant doloremque laudantium, totam rem aperiam, eaque ipsa quae ab ilinventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut' },
+    { img: author3, name: 'Richard E. Harrisona', post: 'CEO & Founder', comment: 'Sedut perspiciatis unde omniiste natus errorsit voluptatem accusant doloremque laudantium, totam rem aperiam, eaque ipsa quae ab ilinventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut' }
 ]
+const SampleNextArrow = (props) => {
+    const { onClick } = props
+    return (
+        <button className="slick-arrow next-arrow" onClick={onClick}><i className="fal fa-long-arrow-right" /></button>
+    )
+}
+
+const SamplePrevArrow = (props) => {
+    const { onClick } = props
+    return (
+        <button className="slick-arrow prev-arrow" onClick={onClick}><i className="fal fa-long-arrow-left" /></button>
+    )
+}
 
 function Testimonials(props) {
-    const sliderRef = useRef()
-
-    const next = () => {
-        sliderRef.current.slickNext()
-    }
-    const previous = () => {
-        sliderRef.current.slickPrev()
-    }
-
     const settings = {
         infinite: true,
         slidesToShow: 1,
@@ -31,21 +35,41 @@ function Testimonials(props) {
         speed: 500,
         arrows: true,
         fade: false,
-        dots: false,
+        dots: true,
+        dotsClass: "testimonial-dots slick-dots slick-thumb",
         swipe: true,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+        customPaging: function (i) {
+            return (
+                <img src={testimonialslide[i].img} alt="" />
+            )
+        },
+        responsive: [{
+            breakpoint: 576,
+            settings: {
+                arrows: false
+            }
+        }],
+
     }
+
+
     return (
-        <section className="testimonial-section grey-bg">
+        <section className="testimonial-section-two section-gap">
             <div className="container">
-                <div className="row justify-content-center justify-content-lg-start">
-                    <div className="col-lg-6 col-md-10 offset-lg-5">
-                        <div className="section-title left-border">
-                            <span className="title-tag">Meet Our Advisorssss</span>
-                            <h2 className="title">We Have An Exclusive <br /> Team Member</h2>
+                <div className="row justify-content-center no-gutters">
+                    <div className="col-lg-9">
+                        <div className="section-title both-border text-center mb-80">
+                            <span className="title-tag">Meet Our Advisors</span>
+                            <h2 className="title">We Have An Exclusive<br />Team Member</h2>
                         </div>
-                        <Slider className="testimonial-items" ref={sliderRef} id="testimonialSliderOne" {...settings}>
+                        <Slider className="testimonial-items" id="testimonialSliderTwo" {...settings}>
                             {testimonialslide.map((item, i) => (
                                 <div key={i} className="testimonial-item">
+                                    <div className="author-img">
+                                        <img src={item.img} alt="" />
+                                    </div>
                                     <div className="content">
                                         <p>
                                             <span className="quote-top">
@@ -57,28 +81,18 @@ function Testimonials(props) {
                                             </span>
                                         </p>
                                     </div>
-                                    <div className="author">
-                                        <div className="thumb">
-                                            <img src={item.img} alt="img" />
-                                        </div>
-                                        <div className="desc">
-                                            <h4>{item.name}</h4>
-                                            <span>{item.post}</span>
-                                        </div>
+                                    <div className="author-name">
+                                        <h4>{item.name}</h4>
+                                        <span>{item.post}</span>
                                     </div>
                                 </div>
                             ))}
                         </Slider>
-                        <div className="testimonial-arrows row">
-                            <div className="col-12 order-1"><button className="slick-arrow next-arrow" onClick={next}><i className="fal fa-long-arrow-right" /></button></div>
-                            <div className="col-12 order-2"><button className="slick-arrow prev-arrow" onClick={previous}><i className="fal fa-long-arrow-left" /></button></div>
-                        </div>
                     </div>
                 </div>
             </div>
-            {/* Testimonials img */}
-            <div className="testimonial-img">
-                <img src={testimonial} alt="" />
+            <div className="testimonial-quote-icon">
+                <img src={quote} alt="quote" />
             </div>
         </section>
     );

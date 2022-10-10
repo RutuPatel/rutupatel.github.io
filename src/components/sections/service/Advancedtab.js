@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Tab, Nav } from 'react-bootstrap'
-import services from "../../../helper/serviceHelper"
+import services from "../../../helpers/serviceHelper"
 import { Link } from 'react-router-dom'
 
 function Advancedtab(props) {
@@ -21,7 +21,7 @@ function Advancedtab(props) {
                                     <Nav.Link
                                         eventKey={item.id}
                                         active={active === item.id}
-                                        onClick={() => setActive(item.id)}>{item.title}
+                                        onClick={() => setActive(item.id)}>{item.name}
                                     </Nav.Link>
                                 </Nav.Item>
                             ))}

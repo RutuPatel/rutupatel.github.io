@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ctabg from '../../assets/img/sidebar/cta.jpg'
-import services from '../../helper/serviceHelper'
+import services from '../../helpers/serviceHelper'
 
 const Servicesidebar = () => {
     const {service} = useParams()
@@ -14,9 +14,9 @@ const Servicesidebar = () => {
                     {services.map((item, i) => (
                         <li key={i}>
                             <Link
-                                className={service === item.title ? "active" : ""}
+                                className={service === item.name ? "active" : ""}
                                 to={item.url}>
-                                {item.title}
+                                {item.name}
                                 <span>
                                     <i className="far fa-angle-right" />
                                 </span>

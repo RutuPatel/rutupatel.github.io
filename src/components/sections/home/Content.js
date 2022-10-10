@@ -1,40 +1,30 @@
 import React, { Component, Fragment } from 'react'
-import Client from '../../layouts/Client'
-import About from './About'
+import Workingprocess from './Workingprocess'
+import About from '../About/About'
 import Banner from './Banner'
-import Blog from './Blog'
+import Whyus from './Whyus'
 import Counter from './Counter'
-import Features from './Features'
+import Project from './Project'
 import Service from './Service'
-import Skills from './Skills'
-import Team from './Team'
 import Testimonials from './Testimonials'
 import Video from './Video'
-import Whyus from './Whyus'
+import Cta from './Cta'
 
 class Content extends Component {
     render() {
         return (
             <Fragment>
                 <Banner />
-                <About />
+                <About />               
                 <Service />
-                <Video />
-                <Features />
-                <Whyus />
+                <Project />
                 <Counter />
-                <Team />
-                <Skills />
+                <Workingprocess />
                 <Testimonials />
-                <section className="client-section">
-                    <div className="container">
-                        <div className="client-slider section-gap line-bottom">
-                            <Client />
-                        </div>
-                    </div>
-                </section>
-                <Blog />
-            </Fragment >
+                <Video />
+                <Whyus />
+                <Cta/>
+            </Fragment>
         );
     }
 }

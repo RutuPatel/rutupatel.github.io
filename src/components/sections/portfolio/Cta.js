@@ -6,7 +6,7 @@ import ctaimg from '../../../assets/img/lines/16.png'
 function Cta(props) {
     return (
         <section className="cta-aection">
-            <div className="container">
+            <div className="container section section-gap-bottom">
                 <div className="cta-wrap bg-img-c" style={{ backgroundImage: "url(" + ctaimg + ")" }}>
                     <div className="row justify-content-center">
                         <div className="col-lg-8">

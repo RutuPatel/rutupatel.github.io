@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet'
-import Header from '../layouts/Headerthree'
+import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import Breadcrumbs from '../layouts/Breadcrumbs'
 import Content from '../sections/service/Content'

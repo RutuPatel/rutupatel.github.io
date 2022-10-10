@@ -2,9 +2,39 @@ import React, { Component } from 'react'
 import { Fade } from 'react-reveal';
 import { Link } from 'react-router-dom'
 
-import illustration from '../../../assets/img/illustration/man-with-earth-02.png'
+import illustration from '../../../assets/img/illustration/contact-us.jpg'
 
 class Content extends Component {
+
+    handleSubmit (e) {
+        e.preventDefault();
+
+        debugger
+        const SibApiV3Sdk = require('sib-api-v3-typescript');
+        let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+        
+        let apiKey = apiInstance.authentications['apiKey'];
+        // TODO : MODIFY AFTER NRE REGISTRATION
+        apiKey.apiKey = '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';
+        
+        let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
+        
+        sendSmtpEmail = {
+            subject: "{{params.subject}}",
+            templateId: 1,
+            // TODO : MODIFY THIS
+            sender: {"name":"John Doe","email":"example@example.com"},
+            to: [{"email":"rutva40@gmail.com","name":"Rutva Patel"}],
+            params: {"to_name":"Test","subject":"Code On Us  New Inquiry - "+ e.target.elements.full_name.value}
+        }; 
+        
+        apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+          console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+        }, function(error) {
+          console.error(error);
+        });
+    }    
+
     render() {
 
         return (
@@ -12,12 +42,12 @@ class Content extends Component {
                 <div className="container">
                     <div className="contact-info">
                         <div className="row justify-content-center">
-                            <div className="col-lg-6 order-2 order-lg-1">
+                            <div className="col-lg-5 order-2 order-lg-1">
                                 <div className="illustration-img text-center">
                                     <img src={illustration} alt="" />
                                 </div>
                             </div>
-                            <div className="col-lg-6 col-md-10 order-1 order-lg-2">
+                            <div className="col-lg-6 offset-lg-1 col-md-10 order-1 order-lg-2">
                                 <div className="contact-info-content">
                                     <div className="section-title left-border mb-40">
                                         <span className="title-tag">Get In Touch</span>
@@ -52,29 +82,29 @@ class Content extends Component {
                                     <div className="section-title text-center mb-40">
                                         <h2 className="title">Don’t Hesited To Contact Us</h2>
                                     </div>
-                                    <form action="#">
+                                    <form action="#" onSubmit={(e) => this.handleSubmit(e)}>
                                         <div className="row">
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="text" placeholder="Your Full Name" />
+                                                    <input type="text" name="full_name" placeholder="Your Full Name" />
                                                     <span className="icon"><i className="far fa-user-circle" /></span>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="email" placeholder="Your Email Address" />
+                                                    <input type="email"  name="email" placeholder="Your Email Address" />
                                                     <span className="icon"><i className="far fa-envelope-open" /></span>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="text" placeholder="Your Phone" />
+                                                    <input type="text" name="phone_number" placeholder="Your Phone" />
                                                     <span className="icon"><i className="far fa-phone" /></span>
                                                 </div>
                                             </div>
                                             <div className="col-12">
                                                 <div className="input-group textarea mb-30">
-                                                    <textarea placeholder="Write Message" defaultValue={""} />
+                                                    <textarea placeholder="Write Message" name="message" defaultValue={""} />
                                                     <span className="icon"><i className="far fa-pencil" /></span>
                                                 </div>
                                             </div>

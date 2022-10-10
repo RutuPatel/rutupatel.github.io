@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import Breadcrumbs from '../layouts/Breadcrumbs'
-import Client from '../layouts/Client'
 import Content from '../sections/portfolio/Content'
 
 const Portfolio = () => {
@@ -17,15 +16,8 @@ const Portfolio = () => {
                 />
             </Helmet>
             <Header />
-            <Breadcrumbs pagename={"about"}/>
+            <Breadcrumbs pagename={"Portfolio"} />
             <Content />
-            <section className="client-section">
-                <div className="container">
-                    <div className="client-slider section-gap">
-                        <Client />
-                    </div>
-                </div>
-            </section>
             <Footer />
         </Fragment>
     )

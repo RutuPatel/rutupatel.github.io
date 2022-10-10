@@ -1,73 +1,53 @@
 import React from 'react'
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom'
-import Slider from 'react-slick'
 
-import img1 from '../../../assets/img/banner/01.jpg'
-import img2 from '../../../assets/img/banner/02.jpg'
-import img3 from '../../../assets/img/banner/03.jpg'
-
-const bannerpost = [
-    { img: img1, tag: 'business & consulting', title: "Making Difference \n Growth Your Business \n With Modern Ideas", btntext: 'Get Started Now', btntext1: 'Our Services' },
-    { img: img2, tag: 'business & consulting', title: "Making Difference \n Growth Your Business \n With Modern Ideas", btntext: 'Get Started Now', btntext1: 'Our Services' },
-    { img: img3, tag: 'business & consulting', title: "Making Difference \n Growth Your Business \n With Modern Ideas", btntext: 'Get Started Now', btntext1: 'Our Services' },
-]
-const settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 500,
-    arrows: false,
-    fade: false,
-    dots: false,
-    swipe: true,
-    adaptiveHeight: true,
-    responsive: [{
-        breakpoint: 768,
-        settings: {
-            arrows: false
-        }
-    }],
-}
+import Bannerimg from '../../../assets/img/illustration/Banner.png'
 
 function Banner(props) {
     return (
-        <section className="banner-section">
-            <Slider className="banner-slider" id="bannerSlider" {...settings}>
-                {bannerpost.map((item, i) => (
-                    <div key={i}>
-                        <div className="single-banner" style={{ backgroundImage: "url(" + item.img + ")" }}>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-lg-10">
-                                        <div className="banner-content">
-                                            <span className="promo-text" data-animation="fadeInDown" data-delay="0.8s">{item.tag}</span>
-                                            <h1 data-animation="fadeInUp" data-delay="1s">{item.title}</h1>
-                                            <ul className="btn-wrap">
-                                                <li data-animation="fadeInLeft" data-delay="1.2s">
-                                                    <Link to="/careers" className="main-btn main-btn-4">{item.btntext}</Link>
-                                                </li>
-                                                <li data-animation="fadeInRight" data-delay="1.4s">
-                                                    <Link to="/service" className="main-btn main-btn-2">{item.btntext1}</Link>
-                                                </li>
-                                            </ul>
+        <section className="banner-section banner-section-three">
+            <div className="banner-slider">
+                <div className="single-banner">
+                    <div className="container container-1600">
+                        <div className="row align-items-center">
+                            <div className="col-md-6">
+                                <div className="banner-content">
+                                    <Fade left cascade duration={1500}>
+                                        <div>
+                                            <span className="promo-text">business &amp; consulting</span>
+                                            <h1>
+                                                Perfect Agency <br /> For Innovative <br /> Business
+                                            </h1>
                                         </div>
-                                    </div>
+                                    </Fade>
+                                    <Fade bottom cascade duration={1500} delay={600}>
+                                        <ul className="btn-wrap">
+                                            <li>
+                                                <Link to="/contact" className="main-btn">Get Started Now</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/services" className="main-btn main-btn-3">Our Services</Link>
+                                            </li>
+                                        </ul>
+                                    </Fade>
                                 </div>
                             </div>
-                            <div className="banner-shapes">
-                                <div className="one" />
-                                <div className="two" />
-                                <div className="three" />
-                                <div className="four" />
+                            <div className="col-md-6 d-none d-md-block">
+                                <Fade right duration={1500} delay={800}>
+                                    <div className="banner-img text-right">
+                                        <img className="banner-img" src={Bannerimg} alt="Banner" />
+                                    </div>
+                                </Fade>
                             </div>
                         </div>
                     </div>
-                ))}
-            </Slider>
-            <div className="search-wrap">
-                <Link to="#" className="search-icon"><i className="far fa-search" /></Link>
+                    <div className="banner-shapes">
+                        <div className="one" />
+                        <div className="two" />
+                        <div className="three" />
+                    </div>
+                </div>
             </div>
         </section>
     );

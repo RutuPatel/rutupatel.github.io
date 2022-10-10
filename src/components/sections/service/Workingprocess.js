@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Fade from 'react-reveal/Fade'
 import ModalVideo from 'react-modal-video'
 
 import processbg1 from '../../../assets/img/video-bg/01.jpg'
@@ -25,7 +26,7 @@ const Workingprocess = (props) => {
                         <div className="process-text">
                             {/* Section Title */}
                             <div className="section-title left-border mb-30">
-                                <span className="title-tag">Working Process</span>
+                                <span className="title-tag">Our Working Process</span>
                                 <h2 className="title">How Dose We Works</h2>
                             </div>
                             <p>
@@ -33,20 +34,22 @@ const Workingprocess = (props) => {
                                 laudantium
                             </p>
                             {/* process-loop */}
-                            <div className="process-loop">
-                                {processlist.map((item, i) => (
-                                    <div key={i} className="single-process wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
-                                        <div className="icon">
-                                            <i className={item.icon} />
-                                            <span>{item.number}</span>
+                            <Fade bottom cascade>
+                                <div className="process-loop">
+                                    {processlist.map((item, i) => (
+                                        <div key={i} className="single-process wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
+                                            <div className="icon">
+                                                <i className={item.icon} />
+                                                <span>{item.number}</span>
+                                            </div>
+                                            <div className="content">
+                                                <h4>{item.title}</h4>
+                                                <p>{item.text}</p>
+                                            </div>
                                         </div>
-                                        <div className="content">
-                                            <h4>{item.title}</h4>
-                                            <p>{item.text}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            </Fade>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-10 order-lg-2 order-1">

@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, useParams } from "react-router-dom"
-import breadcrumbimg from "../../assets/img/breadcrumb.jpg"
 
 const GetBreadcrumbs = (pagename) => {
 	const { service, subservice, portfolio } = useParams()
@@ -34,7 +33,7 @@ const GetBreadcrumbs = (pagename) => {
 const Breadcrumbs = ({ pagename }) => {
 	const breadcrumb = GetBreadcrumbs(pagename)
 	return (
-		<section className='breadcrumb-section bg-img-c' style={{ backgroundImage: "url(" + breadcrumbimg + ")" }}>
+		<section className='breadcrumb-section bg-img-c'>
 			<div className='container'>
 				<div className='breadcrumb-text'>
 					<ul>
@@ -52,6 +51,10 @@ const Breadcrumbs = ({ pagename }) => {
 					</ul>
 					<h1 className='page-title active'>{breadcrumb.pagename}</h1>
 				</div>
+				<div class="shape1"></div>
+				<div class="shape2"></div>
+				<div class="shape3"></div>
+				<div class="shape4"></div>
 			</div>
 		</section>
 	)

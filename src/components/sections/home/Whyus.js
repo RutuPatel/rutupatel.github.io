@@ -1,47 +1,61 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Fade from 'react-reveal/Fade';
+import img1 from '../../../assets/img/illustration/whyUs.png'
+import img2 from '../../../assets/img/illustration/whyUs-2.png'
 
-import illustration from '../../../assets/img/illustration/02.png'
-import line1 from '../../../assets/img/lines/03.png'
-import line2 from '../../../assets/img/lines/04.png'
-
-function Whyus(props) {
+const wculist = [
+    { icon: 'far fa-check-circle', title: 'Best Services' },
+    { icon: 'far fa-check-circle', title: 'Best Services' },
+    { icon: 'far fa-check-circle', title: 'Professional Advisor' },
+    { icon: 'far fa-check-circle', title: 'Professional Advisor' },
+    { icon: 'far fa-check-circle', title: 'Responsive Design' },
+    { icon: 'far fa-check-circle', title: 'Responsive Design' },
+    { icon: 'far fa-check-circle', title: 'Awesome Pricing' },
+    { icon: 'far fa-check-circle', title: 'Awesome Pricing' },
+    { icon: 'far fa-check-circle', title: 'Online Support' },
+    { icon: 'far fa-check-circle', title: 'Online Support' },
+]
+const Whyus = (props) => {
     return (
-        <section className="wcu-section box-style">
+        <section className="wcu-section section-gap">
             <div className="container">
-                <div className="wcu-inner">
-                    <div className="row align-items-center justify-content-center">
-                        <div className="col-lg-6">
-                            <div className="wcu-image text-center text-lg-left wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
-                                <img src={illustration} alt="" />
+                <div className="row align-items-center justify-content-center">
+                    <Fade left>
+                        <div className="col-lg-6 col-md-10">
+                            <div className="wcu-video wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="400ms">
+                                <div className="video-poster-one bg-img-c" style={{ backgroundImage: "url(" + img1 + ")" }}>
+                                </div>
+                                <div className="video-poster-two bg-img-c" style={{ backgroundImage: "url(" + img2 + ")" }}>
+                                    {/* <Link to="#" onClick={openVideoModal} className="popup-video" role="button">
+                                        <i className="fas fa-play" />
+                                    </Link> */}
+                                </div>
                             </div>
                         </div>
+                    </Fade>
+                    <Fade right>
                         <div className="col-lg-6 col-md-10">
-                            <div className="wcu-text">
+                            <div className="wcu-text-two">
                                 <div className="section-title left-border mb-40">
-                                    <span className="title-tag">What We Do</span>
-                                    <h2 className="title">Why Choose Code On Us <br /> Business Agency</h2>
+                                    <span className="title-tag">Why We Are Best ?</span>
+                                    <h2 className="title">We Have Many Reasons Why Choose Us</h2>
                                 </div>
                                 <p>
-                                    Sedut perspiciatis unde omnis iste natus evoluptat em accusantium doloremque laudantium
+                                    Sedut perspiciatis unde omnis iste natus error sit voluptat em accusantium doloremque
+                                    laudantium, totam raperiaeaque ipsa quae ab illo inventore veritatis et quasi
                                 </p>
-                                <ul className="wcu-list">
-                                    <li>
-                                        <i className="far fa-check-circle" /> Specialist Company Advisor Team
-                                    </li>
-                                    <li>
-                                        <i className="far fa-check-circle" /> Understanding Machines OpenS tandard
-                                    </li>
-                                    <li>
-                                        <i className="far fa-check-circle" /> Can Data Visualization Improve Mobile
-                                    </li>
+                                <ul className="wcu-list clearfix">
+                                    {wculist.map((item, i) => (
+                                        <li key={i}>
+                                            <i className={item.icon} /> {item.title}
+                                        </li>
+                                    ))}
                                 </ul>
-                                <Link to="/careers" className="main-btn main-btn-4">Join With Us</Link>
+                                <Link to="/careers" className="main-btn">Join With Us</Link>
                             </div>
                         </div>
-                    </div>
-                    <img src={line1} alt="shape" className="line-shape-one" />
-                    <img src={line2} alt="shape" className="line-shape-two" />
+                    </Fade>
                 </div>
             </div>
         </section>
