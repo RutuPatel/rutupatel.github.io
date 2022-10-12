@@ -33,9 +33,16 @@ const Project = () => {
                                         <div className="thumb bg-img-c" style={{ backgroundImage: "url(" + item.image + ")" }} />
                                     </div>
                                     <div className="project-desc text-center">
-                                        <h4><Link to={item.url}>{item.name}</Link></h4>
+                                        <h4>
+                                            <Link
+                                                to={item.url}
+                                                state={{ projectId: item.id }}
+                                            >{item.name}</Link></h4>
                                         <p className="text-truncate">{item.description}</p>
-                                        <Link to={item.url} className="project-link">
+                                        <Link
+                                            to={item.url}
+                                            state={{ projectId: item.id }}
+                                            className="project-link">
                                             <i className="fal fa-long-arrow-right" />
                                         </Link>
                                     </div>

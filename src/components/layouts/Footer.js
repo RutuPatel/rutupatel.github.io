@@ -10,7 +10,7 @@ import { Fade } from 'react-reveal';
 
 
 const Footer = () => {
-    
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -52,7 +52,7 @@ const Footer = () => {
                                 <Fade bottom cascade>
                                     <ul>
                                         {services.map((item, i) => (
-                                            <li key={i}><Link to={item.url}>{item.name}</Link></li>
+                                            <li key={i}><Link to={item.url} state={{ serviceId: item.id }}>{item.name}</Link></li>
                                         ))}
                                     </ul>
                                 </Fade>

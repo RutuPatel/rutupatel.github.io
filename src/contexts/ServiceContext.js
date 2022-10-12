@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import services from "../helpers/serviceHelper";
 
-const defaultValue = { selectedservice: {}, otherservices: [] }
+const defaultValue = { selectedservice: {} }
 
 export const ServiceContext = React.createContext(defaultValue)
 
 export const useServiceContext = () => React.useContext(ServiceContext)
 
 export const ServiceContextProvider = (props) => {
-    const { service, subservice } = useParams()
+    const location = useLocation()
+    const { serviceId } = location.state
     const [selectedservice, setselectedservice] = useState({})
 
     useEffect(() => {
-        let selectedservice = services.find(item => item.name === service)
+        let selectedservice = services.find(item => item.id === serviceId)
         setselectedservice(selectedservice)
-    }, [service, subservice])
+    }, [serviceId])
 
     return (
         <ServiceContext.Provider value={{ service: selectedservice }}>

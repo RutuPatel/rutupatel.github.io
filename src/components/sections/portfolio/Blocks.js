@@ -58,10 +58,10 @@ const Blocks = () => {
                 </div>
                 <div className="post-desc">
                     <h3 className="title">
-                        <Link to={project.url}>{project.name}</Link>
+                        <Link to={project.url} state={{ projectId: project.id }}>{project.name}</Link>
                     </h3>
                     <p className="truncate">{project.description}</p>
-                    <Link to={project.url} className="post-link">
+                    <Link to={project.url} state={{ projectId: project.id }} className="post-link">
                         Learn More<i className="far fa-long-arrow-right" />
                     </Link>
                 </div>
@@ -88,7 +88,7 @@ const Blocks = () => {
                 <div className="row align-items-center">
                     <div className="col-lg-12 col-md-12">
                         <ul className="project-nav project-isotope-filter">
-                            {categories.map(({ name, isActive}, i) => (
+                            {categories.map(({ name, isActive }, i) => (
                                 <li key={i} className={isActive === true ? 'active' : ''} onClick={() => handleCategory(name)}>{name}</li>
                             ))}
                         </ul>

@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { projects } from "../../../helpers/projectHelper"
 import Slider from 'react-slick'
 
 const Relatedproducts = () => {
-
     const [relatedProjects, setRelatedProjects] = useState(projects)
-    const { portfolio: projectName } = useParams()
+    const location = useLocation()
+    const { projectId } = location.state
 
     const settings = {
         infinite: false,
@@ -38,11 +38,11 @@ const Relatedproducts = () => {
     }
 
     useEffect(() => {
-        const currentProject = projects.find(item => item.name === projectName)
+        const currentProject = projects.find(item => item.id === projectId)
         let filteredProjects = projects.filter((project) => project.category.includes(currentProject.category[0]))
         filteredProjects = filteredProjects.filter(item => item.id !== currentProject.id)
         setRelatedProjects(filteredProjects)
-    }, [projectName])
+    }, [projectId])
 
     const renderRelatedProjects = relatedProjects.map((item, i) => (
         <div key={i} className="col">
@@ -51,9 +51,9 @@ const Relatedproducts = () => {
                     <div className="thumb bg-img-c" style={{ backgroundImage: "url(" + item.image + ")" }} />
                 </div>
                 <div className="project-desc text-center">
-                    <h4><Link to={item.url}>{item.name}</Link></h4>
+                    <h4><Link to={item.url} state={{ projectId: item.id }}>{item.name}</Link></h4>
                     <p className="text-truncate">{item.description}</p>
-                    <Link to={item.url} className="project-link">
+                    <Link to={item.url} state={{ projectId: item.id }} className="project-link">
                         <i className="fal fa-long-arrow-right" />
                     </Link>
                 </div>

@@ -20,11 +20,11 @@ const Service = () => {
                             <div key={i} className="col-lg-4 col-sm-6 col-10">
                                 <div className="service-box-two text-center">
                                     <div className="icon">
-                                        <img src={item.image} alt={item.name}/>
+                                        <img src={item.image} alt={item.name} />
                                     </div>
-                                    <h3><Link to={item.url}>{item.name}</Link></h3>
+                                    <h3><Link to={item.url} state={{ serviceId: item.id }}>{item.name}</Link></h3>
                                     <p>{item.description}</p>
-                                    <Link to={item.url} className="service-link">
+                                    <Link to={item.url} state={{ serviceId: item.id }} className="service-link">
                                         <i className="fal fa-arrow-right" />
                                     </Link>
                                 </div>

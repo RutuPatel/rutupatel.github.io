@@ -6,7 +6,7 @@ const getService = (parentId) => {
     let generatedService = []
     for (let service of services) {
         generatedService.push({
-            id: parseInt(parentId.toString() + service.id.toString()),
+            id: service.id,
             link: service.url,
             linkText: service.name
         })
@@ -23,20 +23,7 @@ const navigationmenu = [
     {
         id: 2,
         link: '/about',
-        linkText: 'About us',
-        child: false,
-        submenu: [
-            {
-                id: 21,
-                link: '/about',
-                linkText: 'About Code On Us'
-            },
-            {
-                id: 22,
-                link: '/testimonials',
-                linkText: 'Testimonial'
-            },
-        ]
+        linkText: 'About us'
     },
     {
         id: 3,
@@ -48,25 +35,7 @@ const navigationmenu = [
     {
         id: 5,
         link: '/portfolio',
-        linkText: 'Portfolio',
-        child: false,
-        submenu: [
-            {
-                id: 51,
-                link: '/portfolio',
-                linkText: 'Portfolio'
-            },
-            {
-                id: 52,
-                link: '/portfoliotwo',
-                linkText: 'Portfolio Two'
-            },
-            {
-                id: 53,
-                link: '/portfoliodetail/Business Monitor',
-                linkText: 'Portfolio Details'
-            },
-        ]
+        linkText: 'Portfolio'
     },
     {
         id: 7,
@@ -103,12 +72,12 @@ const Navmenu = () => {
         <ul>
             {navigationmenu.length > 0 ? navigationmenu.map((item, i) => (
                 <li key={i} className={`${item.child ? 'has-submemu' : ''} `} onClick={triggerChild}>
-                    <Link className={location.pathname === item.link ? "active": ""} to={item.link}> {item.linkText} </Link>{item.child ? <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> : <></>}
+                    <Link className={location.pathname === item.link ? "active" : ""} to={item.link}> {item.linkText} </Link>{item.child ? <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> : <></>}
                     {item.child ?
                         <ul className="submenu" role="menu">
                             {item.submenu.map((sub_item, i) => (
                                 <li key={i} className={`${sub_item.child ? 'has-submemu' : ''} `}>
-                                    {sub_item.child ? <> <Link onClick={e => e.preventDefault()} to="/"> {sub_item.linkText} </Link> <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> </> : <Link to={sub_item.link}> {sub_item.linkText} </Link>}
+                                    {sub_item.child ? <> <Link onClick={e => e.preventDefault()} to="/"> {sub_item.linkText} </Link> <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> </> : <Link to={sub_item.link} state={{ serviceId: sub_item.id }}> {sub_item.linkText} </Link>}
                                     {sub_item.submenu ?
                                         <ul className="submenu">
                                             {sub_item.submenu.map((third_item, i) => (

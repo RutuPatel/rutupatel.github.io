@@ -3,7 +3,7 @@ import { Fade } from 'react-reveal'
 import { Link } from 'react-router-dom'
 import services from '../../../helpers/serviceHelper'
 
-function Service(props) {
+const Service = () => {
     return (
         <section className="service-section grey-bg service-line-shape section-gap">
             <div className="container">
@@ -19,9 +19,9 @@ function Service(props) {
                                     <div className="icon">
                                         <img src={item.image} alt={item.name} />
                                     </div>
-                                    <h3><Link to={item.url}>{item.name}</Link></h3>
+                                    <h3><Link to={item.url} state={{ serviceId: item.id }}>{item.name}</Link></h3>
                                     <p>{item.description}</p>
-                                    <Link to={item.url} className="service-link">
+                                    <Link to={item.url} state={{ serviceId: item.id }} className="service-link">
                                         <i className="fal fa-long-arrow-right" />
                                     </Link>
                                 </div>

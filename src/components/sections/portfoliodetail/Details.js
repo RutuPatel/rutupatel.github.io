@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { Fade } from 'react-reveal'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import thumb from '../../../assets/img/portfoliodetail/project-big-img.jpg'
 
 import { projects } from '../../../helpers/projectHelper'
 
 const Details = () => {
-    const { portfolio: projectName } = useParams()
+    const location = useLocation()
+    const { projectId } = location.state
     const navigate = useNavigate();
     const [project, setproject] = useState({})
 
     useEffect(() => {
-        const project = projects.find(item => item.name === projectName)
+        const project = projects.find(item => item.id === projectId)
         setproject(project)
-    }, [projectName])
+    }, [projectId])
 
     const getPreviousProject = (dataItem) => {
         const currentIndex = projects.findIndex(item => item.id === dataItem.id)
         const project = projects[currentIndex - 1]
-        navigate(project.url)
+        navigate(project.url, { state: { projectId: project.id } })
     }
 
     const getNextProject = (dataItem) => {
         const currentIndex = projects.findIndex(item => item.id === dataItem.id)
         const project = projects[currentIndex + 1]
-        navigate(project.url);
+        navigate(project.url, { state: { projectId: project.id } });
     }
-
 
     return (
         <section className="project-details section-gap">

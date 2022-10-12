@@ -9,13 +9,12 @@ class Content extends Component {
     handleSubmit (e) {
         e.preventDefault();
 
-        debugger
         const SibApiV3Sdk = require('sib-api-v3-typescript');
         let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
         
         let apiKey = apiInstance.authentications['apiKey'];
         // TODO : MODIFY AFTER NRE REGISTRATION
-        apiKey.apiKey = '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';
+        apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY;
         
         let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
         

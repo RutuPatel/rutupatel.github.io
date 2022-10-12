@@ -4,7 +4,7 @@ import ctabg from '../../assets/img/sidebar/cta.jpg'
 import services from '../../helpers/serviceHelper'
 
 const Servicesidebar = () => {
-    const {service} = useParams()
+    const { service } = useParams()
     return (
         <div className="sidebar">
             {/* Services List Widget */}
@@ -15,7 +15,9 @@ const Servicesidebar = () => {
                         <li key={i}>
                             <Link
                                 className={service === item.name ? "active" : ""}
-                                to={item.url}>
+                                to={item.url}
+                                state={{ serviceId: item.id }}
+                            >
                                 {item.name}
                                 <span>
                                     <i className="far fa-angle-right" />
