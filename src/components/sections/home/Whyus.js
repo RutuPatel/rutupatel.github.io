@@ -52,7 +52,7 @@ const Whyus = (props) => {
                                         </li>
                                     ))}
                                 </ul>
-                                <Link to="/careers" className="main-btn">Join With Us</Link>
+                                <Link to="/contact" className="main-btn">Join With Us</Link>
                             </div>
                         </div>
                     </Fade>

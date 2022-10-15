@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 import illustration from '../../../assets/img/illustration/about-us.png'
 
-function About(props) {
-
+const About = () => {
+    const location = useLocation()
     return (
         <section className="about-section about-illustration-img section-gap">
             <div className="container">
                 <div className="illustration-img">
                     <Fade left>
-                    <img src={illustration} alt="" />
+                        <img src={illustration} alt="" />
                     </Fade>
                 </div>
                 <div className="row no-gutters justify-content-lg-end justify-content-center">
@@ -37,7 +37,7 @@ function About(props) {
                                         in Virginia, looked up one more</li>
                                 </ul>
                             </Fade>
-                            <Link to="/about" className="main-btn">Learn More</Link>
+                            {location.pathname !== "/about" && <Link to="/about" className="main-btn">Learn More</Link>}
                         </div>
                     </div>
                 </div>
