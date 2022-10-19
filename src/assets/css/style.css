@@ -45,7 +45,7 @@
 :root {
   --thm-font-family: "Source Sans Pro", sans-serif;
   --thm-primary: #0096c7;
-  --thm-secondary: #14212b;
+  --thm-secondary: #000;
   --thm-white: #fff;
   --thm-whitesmoke: #f5f5f5;
   /* --thm-primary: #ff4a17; */
@@ -882,7 +882,7 @@ header .header-nav .nav-container .menu-items ul li a {
   margin: 0 15px;
   line-height: 130px;
   position: relative;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 @media (max-width: 1599px) {
