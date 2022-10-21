@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
-import logo from '../../assets/img/logo/logo-dark.png'
+import logo from '../../assets/img/logo/CodeonusLight.png'
 
 const Offcanvas = () => {
     return (
         <Fragment>
             <div className="widget about-widget">
-                <div className="logo mb-30">
-                    <img src={logo} alt="" />
+                <div className="site-logo mb-30">
+                    <img src={logo} alt="logo" />
                 </div>
                 <p>
                     Sedut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,

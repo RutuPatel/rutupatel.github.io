@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Navmenu from './Navmenu';
 import OffCanvas from './Offcanvas';
-import logo from "../../assets/img/logo/codeonus4.jpg"
-import logo2 from "../../assets/img/logo/codeonus2.jpg"  
+import logo from "../../assets/img/logo/CodeonusLight.png"
+import logo2 from "../../assets/img/logo/CodeonusDark.png" 
 
 
 const Headerthree = () => {
