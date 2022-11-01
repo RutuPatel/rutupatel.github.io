@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import logo from '../../assets/img/logo/CodeonusDark.png'
+import logo from '../../assets/img/logo/CodeonusLight.png'
 import shape1 from '../../assets/img/lines/01.png'
 import shape2 from '../../assets/img/lines/02.png'
 
@@ -23,6 +23,7 @@ const Footer = () => {
         const year = date.getFullYear()
         return year === 2022 ? "" : ` - ${year}`
     }
+
     return (
         <footer>
             <div className="container">
@@ -78,21 +79,21 @@ const Footer = () => {
                                         <Fade bottom cascade>
                                             <ul className="contact-infos">
                                                 <li key="phone">
-                                                    <Link to="tel:+0123456789">
+                                                    <Link to="#">
                                                         <i className="far fa-phone" />
-                                                        +012 (345) 6789
+                                                        +1 (226) 899-6424
                                                     </Link>
                                                 </li>
                                                 <li key="e-mail">
-                                                    <Link to="mailto:support@gmail.com">
+                                                    <Link to="#">
                                                         <i className="far fa-envelope-open" />
-                                                        support@gmail.com
+                                                        info@codeonus.com
                                                     </Link>
                                                 </li>
                                                 <li key="address">
                                                     <a target="_blank" href='https://goo.gl/maps/uT6LMQ7qjpFwvwGd9' rel="noreferrer">
                                                         <i className="far fa-map-marker-alt" />
-                                                        Broklyn Street USA
+                                                        58 Crystalview crescent, Brampton ON L6P2S3
                                                     </a>
                                                 </li>
                                             </ul>

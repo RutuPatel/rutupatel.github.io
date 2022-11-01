@@ -3,36 +3,139 @@ import { Fade } from 'react-reveal';
 import { Link } from 'react-router-dom'
 
 import illustration from '../../../assets/img/illustration/contact-us.jpg'
+import ErrorMessage from '../../../helpers/ErrorMessage';
 
 class Content extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+            error: {
+                name: {
+                    valid: false,
+                    message: "",
+                },
+                email: {
+                    valid: false,
+                    message: "",
+                },
+                phone: {
+                    valid: false,
+                    message: "",
+                },
+                message: {
+                    valid: false,
+                    message: "",
+                }
+            }
+        }
+    }
 
-    handleSubmit (e) {
+    //onSend Send Inquiry Email
+    handleSubmit(e) {
         e.preventDefault();
 
         const SibApiV3Sdk = require('sib-api-v3-typescript');
         let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-        
+
         let apiKey = apiInstance.authentications['apiKey'];
         // TODO : MODIFY AFTER NRE REGISTRATION
         apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY;
-        
-        let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
-        
+
+        let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
         sendSmtpEmail = {
             subject: "{{params.subject}}",
             templateId: 1,
             // TODO : MODIFY THIS
-            sender: {"name":"John Doe","email":"example@example.com"},
-            to: [{"email":"rutva40@gmail.com","name":"Rutva Patel"}],
-            params: {"to_name":"Test","subject":"Code On Us  New Inquiry - "+ e.target.elements.full_name.value}
-        }; 
-        
-        apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
-          console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-        }, function(error) {
-          console.error(error);
+            sender: { "name": "John Doe", "email": "example@example.com" },
+            to: [{ "email": "rutva40@gmail.com", "name": "Rutva Patel" }],
+            params: { "to_name": "Test", "subject": "Code On Us  New Inquiry - " + e.target.elements.full_name.value }
+        };
+
+        apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+        }, function (error) {
+            console.error(error);
         });
-    }    
+    }
+
+    // Onchange handler for all form fields
+    handleChange = (event) => {
+        const { name, value } = event.target
+        const error = this.checkValidation(name, value)
+        this.setState({
+            [name]: value,
+            error
+        })
+    }
+
+    // Validation Checker for all form fields
+    checkValidation = (field, value) => {
+        let { error } = this.state
+
+        if (field === "name") {
+            if (value.trim() === "") {
+                error.name.valid = false
+                error.name.message = "name is required"
+            } else {
+                error.name.valid = true
+                error.name.message = ""
+            }
+        } else if (field === "email") {
+            if (value.trim() === "") {
+                error.email.valid = false
+                error.email.message = "email is required"
+            } else if (!this.validateEmail(value)) {
+                error.email.valid = false
+                error.email.message = "email is invalid"
+            } else {
+                error.email.valid = true
+                error.email.message = ""
+            }
+        } else if (field === "phone") {
+            if (value.trim() === "") {
+                error.phone.valid = false
+                error.phone.message = "phone is required"
+            } else {
+                error.phone.valid = true
+                error.phone.message = ""
+            }
+        } else {
+            if (value.trim() === "") {
+                error.message.valid = false
+                error.message.message = "message is required"
+            } else {
+                error.message.valid = true
+                error.message.message = ""
+            }
+        }
+        return error
+    }
+
+    validateEmail = (email) => {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    //Handle Send button disable or not
+    shouldSendDisabled = () => {
+        let { error } = this.state
+        let disabled = false
+        if (
+            !error.name.valid ||
+            !error.email.valid ||
+            !error.phone.valid ||
+            !error.message.valid
+        ) {
+            disabled = true
+        }
+        return disabled
+    }
 
     render() {
 
@@ -59,13 +162,13 @@ class Content extends Component {
                                     <Fade right cascade>
                                         <ul>
                                             <li className="phone">
-                                                <Link to="tel:+0123456789"><i className="far fa-phone" />+012 (345) 6789</Link>
+                                                <Link to="#"><i className="far fa-phone" />+1 (226) 899-6424</Link>
                                             </li>
-                                            <li><i className="far fa-envelope-open" /><Link to="#">support@gmail.com</Link></li>
+                                            <li><i className="far fa-envelope-open" /><Link to="#">info@codeonus.com</Link></li>
                                             <li>
                                                 <a target="_blank" href='https://goo.gl/maps/uT6LMQ7qjpFwvwGd9' rel="noreferrer">
                                                     <i className="far fa-map-marker-alt" />
-                                                    Broklyn Street USA
+                                                    58 Crystalview crescent, Brampton ON L6P2S3
                                                 </a>
                                             </li>
                                         </ul>
@@ -85,30 +188,34 @@ class Content extends Component {
                                         <div className="row">
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="text" name="full_name" placeholder="Your Full Name" />
+                                                    <input type="text" name="name" placeholder="Your Full Name" value={this.state.name} onChange={this.handleChange} />
                                                     <span className="icon"><i className="far fa-user-circle" /></span>
+                                                    <ErrorMessage error={this.state.error.name} />
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="email"  name="email" placeholder="Your Email Address" />
+                                                    <input type="email" name="email" placeholder="Your Email Address" value={this.state.email} onChange={this.handleChange} />
                                                     <span className="icon"><i className="far fa-envelope-open" /></span>
+                                                    <ErrorMessage error={this.state.error.email} />
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
-                                                    <input type="text" name="phone_number" placeholder="Your Phone" />
+                                                    <input type="tel" name="phone" placeholder="Your Contact number" value={this.state.phone} onChange={this.handleChange} />
                                                     <span className="icon"><i className="far fa-phone" /></span>
+                                                    <ErrorMessage error={this.state.error.phone} />
                                                 </div>
                                             </div>
                                             <div className="col-12">
                                                 <div className="input-group textarea mb-30">
-                                                    <textarea placeholder="Write Message" name="message" defaultValue={""} />
+                                                    <textarea placeholder="Write Message" name="message" value={this.state.message} onChange={this.handleChange} />
                                                     <span className="icon"><i className="far fa-pencil" /></span>
+                                                    <ErrorMessage error={this.state.error.message} />
                                                 </div>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <button type="submit" className="main-btn">Send Message</button>
+                                                <button disabled={this.shouldSendDisabled()} type="submit" className="main-btn">Send Message</button>
                                             </div>
                                         </div>
                                     </form>

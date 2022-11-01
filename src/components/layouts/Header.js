@@ -2,8 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Navmenu from './Navmenu';
 import OffCanvas from './Offcanvas';
-import logo from "../../assets/img/logo/CodeonusLight.png"
-import logo2 from "../../assets/img/logo/CodeonusDark.png" 
+import logo from "../../assets/img/logo/CodeonusLigh-4.jpg"
 
 
 const Headerthree = () => {
@@ -86,11 +85,17 @@ const Headerthree = () => {
                         <div className={`nav-container ${mobileactive}`}>
                             {/* Site Logo */}
                             <div className="site-logo">
-                                <Link to="/"><img src={(location.pathname === "/" && stickyheader !== "sticky-on") ? logo : logo2} alt="Logo" /></Link>
+                                <Link to="/"><img src={logo} alt="Logo" /></Link>
                             </div>
                             {/* Main Menu */}
                             <div className={state.togglemethod === true ? 'nav-menu d-lg-flex align-items-center menu-on' : 'nav-menu d-lg-flex align-items-center'}>
                                 {/* Navbar Close Icon */}
+                                {
+                                    (mobileactive || smallmobileactive) &&
+                                    <div className="site-logo">
+                                        <Link to="/"><img src={logo} alt="Logo" /></Link>
+                                    </div>
+                                }
                                 <div className="navbar-close" onClick={toggleClass}>
                                     <div className="cross-wrap"><span /><span /></div>
                                 </div>
