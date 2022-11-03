@@ -74,11 +74,6 @@ function Advancedtab(props) {
                                 <div className="tab-text-block">
                                     <div className="row align-items-center justify-content-center">
                                         <div className="col-lg-6 col-md-10">
-                                            <div className="block-image">
-                                                <img src={history} alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-md-10">
                                             <div className="block-text">
                                                 <h2 className="title">Professional Business Guidance Agency</h2>
                                                 <p>
@@ -94,6 +89,11 @@ function Advancedtab(props) {
                                                         </li>
                                                     ))}
                                                 </ul>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6 col-md-10">
+                                            <div className="block-image">
+                                                <img src={history} alt="" />
                                             </div>
                                         </div>
                                     </div>

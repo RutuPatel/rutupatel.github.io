@@ -19,15 +19,15 @@ const Offcanvas = () => {
                 <ul>
                     <li>
                         <i className="far fa-map-marked-alt" />
-                        6701 Democracy Blvd, Suite 300, USA
+                        58 Crystalview crescent, Brampton ON L6P2S3
                     </li>
                     <li>
                         <i className="far fa-phone" />
-                        0800-123456 (24/7 Support Line)
+                        +1 (226) 899-6424
                     </li>
                     <li>
                         <i className="far fa-envelope-open" />
-                        info@example.com
+                        info@codeonus.com
                     </li>
                 </ul>
             </div>

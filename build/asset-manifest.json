@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.16f223c0.chunk.css",
     "main.js": "/static/js/main.65182182.chunk.js",
     "main.js.map": "/static/js/main.65182182.chunk.js.map",
@@ -12,6 +13,20 @@
     "static/css/2.6653d5f3.chunk.css.map": "/static/css/2.6653d5f3.chunk.css.map",
     "static/css/main.16f223c0.chunk.css.map": "/static/css/main.16f223c0.chunk.css.map",
     "static/js/2.76991ef8.chunk.js.LICENSE.txt": "/static/js/2.76991ef8.chunk.js.LICENSE.txt",
+=======
+    "main.css": "/static/css/main.ac615364.chunk.css",
+    "main.js": "/static/js/main.83793bfa.chunk.js",
+    "main.js.map": "/static/js/main.83793bfa.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ffa87303.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ffa87303.js.map",
+    "static/css/2.6653d5f3.chunk.css": "/static/css/2.6653d5f3.chunk.css",
+    "static/js/2.2446b5f3.chunk.js": "/static/js/2.2446b5f3.chunk.js",
+    "static/js/2.2446b5f3.chunk.js.map": "/static/js/2.2446b5f3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.6653d5f3.chunk.css.map": "/static/css/2.6653d5f3.chunk.css.map",
+    "static/css/main.ac615364.chunk.css.map": "/static/css/main.ac615364.chunk.css.map",
+    "static/js/2.2446b5f3.chunk.js.LICENSE.txt": "/static/js/2.2446b5f3.chunk.js.LICENSE.txt",
+>>>>>>> f624e3f93d7ffea3fe97fd047f914f4f43c7077f
     "static/media/01.911c5bd9.jpg": "/static/media/01.911c5bd9.jpg",
     "static/media/02.62a5f4e3.jpg": "/static/media/02.62a5f4e3.jpg",
     "static/media/03.c60a3dd6.jpg": "/static/media/03.c60a3dd6.jpg",
@@ -22,7 +37,7 @@
     "static/media/14.782173c2.jpg": "/static/media/14.782173c2.jpg",
     "static/media/16.d8074345.png": "/static/media/16.d8074345.png",
     "static/media/Banner.c3b3f23b.png": "/static/media/Banner.c3b3f23b.png",
-    "static/media/CodeonusDark.8cea2210.png": "/static/media/CodeonusDark.8cea2210.png",
+    "static/media/CodeonusLigh-4.0b655d9c.jpg": "/static/media/CodeonusLigh-4.0b655d9c.jpg",
     "static/media/CodeonusLight.2cd32155.png": "/static/media/CodeonusLight.2cd32155.png",
     "static/media/about-us.170789cf.png": "/static/media/about-us.170789cf.png",
     "static/media/businessgoals.afe14e71.png": "/static/media/businessgoals.afe14e71.png",
@@ -46,8 +61,14 @@
   "entrypoints": [
     "static/js/runtime-main.ffa87303.js",
     "static/css/2.6653d5f3.chunk.css",
+<<<<<<< HEAD
     "static/js/2.76991ef8.chunk.js",
     "static/css/main.16f223c0.chunk.css",
     "static/js/main.65182182.chunk.js"
+=======
+    "static/js/2.2446b5f3.chunk.js",
+    "static/css/main.ac615364.chunk.css",
+    "static/js/main.83793bfa.chunk.js"
+>>>>>>> f624e3f93d7ffea3fe97fd047f914f4f43c7077f
   ]
 }

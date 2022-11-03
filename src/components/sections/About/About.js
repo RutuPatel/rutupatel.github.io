@@ -8,11 +8,6 @@ const About = () => {
     return (
         <section className="about-section about-illustration-img section-gap">
             <div className="container">
-                <div className="illustration-img">
-                    <Fade left>
-                        <img src={illustration} alt="" />
-                    </Fade>
-                </div>
                 <div className="row no-gutters justify-content-lg-end justify-content-center">
                     <div className="col-lg-6 col-md-10">
                         <div className="about-text-two">
@@ -40,6 +35,11 @@ const About = () => {
                             {location.pathname !== "/about" && <Link to="/about" className="main-btn">Learn More</Link>}
                         </div>
                     </div>
+                </div>
+                <div className="illustration-img">
+                    <Fade left>
+                        <img src={illustration} alt="" />
+                    </Fade>
                 </div>
             </div>
         </section>
