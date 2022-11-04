@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
-import logo from '../../assets/img/logo/CodeonusLight.png'
+import logo from '../../assets/img/logo/CodeonusLight-blue-2.jpg'
 
 const Offcanvas = () => {
     return (

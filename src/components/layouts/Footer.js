@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import logo from '../../assets/img/logo/CodeonusLight.png'
+import logo from '../../assets/img/logo/CodeonusDark-blue-2.jpg'
 import shape1 from '../../assets/img/lines/01.png'
 import shape2 from '../../assets/img/lines/02.png'
 

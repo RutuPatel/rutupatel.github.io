@@ -100,7 +100,11 @@ class Content extends Component {
             if (value.trim() === "") {
                 error.phone.valid = false
                 error.phone.message = "phone is required"
-            } else {
+            } 
+            else if (!this.validatePhone(value)) {
+                error.phone.valid = false
+                error.phone.message = "phone is invalid"
+            }else {
                 error.phone.valid = true
                 error.phone.message = ""
             }
@@ -119,6 +123,12 @@ class Content extends Component {
     validateEmail = (email) => {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    validatePhone= (phone) => {
+        return phone.match(
+            /^\+?[1-9][0-9]{7,14}$/
         );
     };
 

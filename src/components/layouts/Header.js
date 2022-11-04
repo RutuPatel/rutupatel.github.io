@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Navmenu from './Navmenu';
 import OffCanvas from './Offcanvas';
-import logo from "../../assets/img/logo/CodeonusLigh-4.jpg"
-
+import logo from "../../assets/img/logo/CodeonusLight-blue-2.jpg"
+import darklogo from "../../assets/img/logo/CodeonusDark-blue-2.jpg"
 
 const Headerthree = () => {
 
@@ -93,7 +93,7 @@ const Headerthree = () => {
                                 {
                                     (mobileactive || smallmobileactive) &&
                                     <div className="site-logo">
-                                        <Link to="/"><img src={logo} alt="Logo" /></Link>
+                                        <Link to="/"><img src={darklogo} alt="Logo" /></Link>
                                     </div>
                                 }
                                 <div className="navbar-close" onClick={toggleClass}>
