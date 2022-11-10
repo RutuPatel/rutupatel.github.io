@@ -77,44 +77,19 @@ class Content extends Component {
     checkValidation = (field, value) => {
         let { error } = this.state
 
-        if (field === "name") {
-            if (value.trim() === "") {
-                error.name.valid = false
-                error.name.message = "name is required"
-            } else {
-                error.name.valid = true
-                error.name.message = ""
-            }
-        } else if (field === "email") {
-            if (value.trim() === "") {
-                error.email.valid = false
-                error.email.message = "email is required"
-            } else if (!this.validateEmail(value)) {
-                error.email.valid = false
-                error.email.message = "email is invalid"
-            } else {
-                error.email.valid = true
-                error.email.message = ""
-            }
-        } else if (field === "phone") {
-            if (value.trim() === "") {
-                error.phone.valid = false
-                error.phone.message = "phone is required"
-            } 
-            else if (!this.validatePhone(value)) {
-                error.phone.valid = false
-                error.phone.message = "phone is invalid"
-            }else {
-                error.phone.valid = true
-                error.phone.message = ""
-            }
+        if (value.trim() === "") {
+            error[field].valid = false
+            error[field].message = `${field} is required`
         } else {
-            if (value.trim() === "") {
-                error.message.valid = false
-                error.message.message = "message is required"
+            if (field === "email" && !this.validateEmail(value)) {
+                error[field].valid = false
+                error[field].message = `${field} is invalid`
+            } else if (field === "phone" && !this.validatePhone(value)) {
+                error[field].valid = false
+                error[field].message = `${field} is invalid`
             } else {
-                error.message.valid = true
-                error.message.message = ""
+                error[field].valid = true
+                error[field].message = ""
             }
         }
         return error
@@ -126,7 +101,7 @@ class Content extends Component {
         );
     };
 
-    validatePhone= (phone) => {
+    validatePhone = (phone) => {
         return phone.match(
             /^\+?[1-9][0-9]{7,14}$/
         );
@@ -204,11 +179,11 @@ class Content extends Component {
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
-                                                <div className="input-group mb-30">
+                                                <div className="input-group">
                                                     <input type="email" name="email" placeholder="Your Email Address" value={this.state.email} onChange={this.handleChange} />
                                                     <span className="icon"><i className="far fa-envelope-open" /></span>
-                                                    <ErrorMessage error={this.state.error.email} />
                                                 </div>
+                                                <ErrorMessage error={this.state.error.email} />
                                             </div>
                                             <div className="col-lg-4">
                                                 <div className="input-group mb-30">
