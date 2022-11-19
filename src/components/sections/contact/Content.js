@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Fade } from 'react-reveal';
 import { Link } from 'react-router-dom'
-
+import { TransEmail } from './Email'
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import illustration from '../../../assets/img/illustration/contact-us.jpg'
 import ErrorMessage from '../../../helpers/ErrorMessage';
 
@@ -13,6 +15,7 @@ class Content extends Component {
             email: "",
             phone: "",
             message: "",
+            isSubmitting: false,
             error: {
                 name: {
                     valid: false,
@@ -35,8 +38,9 @@ class Content extends Component {
     }
 
     //onSend Send Inquiry Email
-    handleSubmit(e) {
+    handleSubmit = async (e) => {
         e.preventDefault();
+        this.setState({ isSubmitting: true })
 
         const SibApiV3Sdk = require('sib-api-v3-typescript');
         let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
@@ -51,16 +55,11 @@ class Content extends Component {
             subject: "{{params.subject}}",
             templateId: 1,
             // TODO : MODIFY THIS
-            sender: { "name": "John Doe", "email": "example@example.com" },
-            to: [{ "email": "rutva40@gmail.com", "name": "Rutva Patel" }],
-            params: { "to_name": "Test", "subject": "Code On Us  New Inquiry - " + e.target.elements.full_name.value }
+            sender: { "name": this.state.name, "email": this.state.email },
+            to: [{ "email": "rutu@codeonus.com", "name": "Rutu Patel" }],
         };
-
-        apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
-            console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-        }, function (error) {
-            console.error(error);
-        });
+        await TransEmail(sendSmtpEmail);
+        this.setState({ isSubmitting: false })
     }
 
     // Onchange handler for all form fields
@@ -103,6 +102,7 @@ class Content extends Component {
 
     validatePhone = (phone) => {
         return phone.match(
+            //TODO: country code feature update 
             /^\+?[1-9][0-9]{7,14}$/
         );
     };
@@ -115,7 +115,8 @@ class Content extends Component {
             !error.name.valid ||
             !error.email.valid ||
             !error.phone.valid ||
-            !error.message.valid
+            !error.message.valid ||
+            this.state.isSubmitting
         ) {
             disabled = true
         }
@@ -123,7 +124,7 @@ class Content extends Component {
     }
 
     render() {
-
+        toast.configure();
         return (
             <section className="contact-section contact-page section-gap">
                 <div className="container">
@@ -149,7 +150,7 @@ class Content extends Component {
                                             <li className="phone">
                                                 <Link to="#"><i className="far fa-phone" />+1 (226) 899-6424</Link>
                                             </li>
-                                            <li><i className="far fa-envelope-open" /><Link to="#">info@codeonus.com</Link></li>
+                                            <li><i className="far fa-envelope-open" /><Link to="#">connect@codeonus.com</Link></li>
                                             <li>
                                                 <a target="_blank" href='https://goo.gl/maps/uT6LMQ7qjpFwvwGd9' rel="noreferrer">
                                                     <i className="far fa-map-marker-alt" />
@@ -200,8 +201,13 @@ class Content extends Component {
                                                 </div>
                                             </div>
                                             <div className="col-12 text-center">
-                                                <button disabled={this.shouldSendDisabled()} type="submit" className="main-btn">Send Message</button>
+                                                <button disabled={this.shouldSendDisabled()} type="submit" className="main-btn">
+                                                    {this.state.isSubmitting && (
+                                                        <span className="spinner-border spinner-border-sm mr-3"></span>
+                                                    )}Send Message
+                                                </button>
                                             </div>
+                                            <ToastContainer closeButton={false} position="bottom-right" />
                                         </div>
                                     </form>
                                 </div>

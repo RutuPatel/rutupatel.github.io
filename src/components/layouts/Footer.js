@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import logo from '../../assets/img/logo/CodeonusDark-blue-2.jpg'
+import logo from '../../assets/img/logo/Codeonus-Dark.png'
 import shape1 from '../../assets/img/lines/01.png'
 import shape2 from '../../assets/img/lines/02.png'
 
@@ -61,7 +61,7 @@ const Footer = () => {
                         </div>
                         <div className="col-lg-5 order-lg-4 order-5">
                             <div className="row">
-                                <div className="col-lg-6 col-sm-6">
+                                <div className="col-lg-5 col-sm-5">
                                     <div className="widget nav-widget">
                                         <h4 className="widget-title">Company</h4>
                                         <Fade bottom cascade>
@@ -73,7 +73,7 @@ const Footer = () => {
                                         </Fade>
                                     </div>
                                 </div>
-                                <div className="col-lg-6 col-sm-6">
+                                <div className="col-lg-7 col-sm-7">
                                     <div className="widget contact-widget">
                                         <h4 className="widget-title">Contact Us</h4>
                                         <Fade bottom cascade>
@@ -87,7 +87,7 @@ const Footer = () => {
                                                 <li key="e-mail">
                                                     <Link to="#">
                                                         <i className="far fa-envelope-open" />
-                                                        info@codeonus.com
+                                                        connect@codeonus.com
                                                     </Link>
                                                 </li>
                                                 <li key="address">

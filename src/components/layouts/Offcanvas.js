@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
-import logo from '../../assets/img/logo/CodeonusLight-blue-2.jpg'
+import logo from '../../assets/img/logo/Codeonus-Light.png'
 
 const Offcanvas = () => {
     return (
@@ -27,7 +27,7 @@ const Offcanvas = () => {
                     </li>
                     <li>
                         <i className="far fa-envelope-open" />
-                        info@codeonus.com
+                        connect@codeonus.com
                     </li>
                 </ul>
             </div>

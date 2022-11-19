@@ -1,6 +1,6 @@
 {
-	"name": "Codeonus",
-	"version": "1.0.0",
+	"name": "website",
+	"version": "0.1.0",
 	"private": true,
 	"homepage": "https://rutupatel.github.io",
 	"dependencies": {
@@ -17,7 +17,6 @@
 		"react-router-dom": "^6.4.1",
 		"react-scripts": "^4.0.3",
 		"react-slick": "^0.29.0",
-		"react-toastify": "^8.1.0",
 		"react-visibility-sensor": "^5.1.1",
 		"sib-api-v3-typescript": "^2.2.2",
 		"slick-carousel": "^1.8.1"
