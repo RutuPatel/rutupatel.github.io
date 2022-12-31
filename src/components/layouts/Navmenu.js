@@ -71,13 +71,14 @@ const Navmenu = () => {
     return (
         <ul>
             {navigationmenu.length > 0 ? navigationmenu.map((item, i) => (
-                <li key={i} className={`${item.child ? 'has-submemu' : ''} `} onClick={triggerChild}>
-                    <Link className={location.pathname === item.link ? "active" : ""} to={item.link}> {item.linkText} </Link>{item.child ? <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> : <></>}
+                <li key={i} className={`${item.child ? 'has-submemu' : ''} `}>
+                    <Link className={location.pathname === item.link ? "active" : ""} to={item.link}> {item.linkText} </Link>
+                    {/* {item.child ? <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> : <></>} */}
                     {item.child ?
                         <ul className="submenu" role="menu">
                             {item.submenu.map((sub_item, i) => (
                                 <li key={i} className={`${sub_item.child ? 'has-submemu' : ''} `}>
-                                    {sub_item.child ? <> <Link onClick={e => e.preventDefault()} to="/"> {sub_item.linkText} </Link> <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> </> : <Link to={sub_item.link} state={{ serviceId: sub_item.id }}> {sub_item.linkText} </Link>}
+                                    {/* {sub_item.child ? <> <Link onClick={e => e.preventDefault()} to="/"> {sub_item.linkText} </Link> <span className="dd-trigger"><i className="fal fa-angle-down"></i></span> </> : <Link to={sub_item.link} state={{ serviceId: sub_item.id }}> {sub_item.linkText} </Link>}
                                     {sub_item.submenu ?
                                         <ul className="submenu">
                                             {sub_item.submenu.map((third_item, i) => (
@@ -85,7 +86,7 @@ const Navmenu = () => {
                                                     to={third_item.link}>{third_item.linkText}</Link>
                                                 </li>
                                             ))}
-                                        </ul> : null}
+                                        </ul> : null} */}
                                 </li>
                             ))}
                         </ul>

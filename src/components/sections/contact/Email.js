@@ -7,14 +7,14 @@ export async function TransEmail(params) {
 	let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 	let apiKey = apiInstance.authentications['apiKey'];
-	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_RUTU;
+	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_DEV;
 
 	let sendSmtpEmail = {
 		subject: params.subject,
-		templateId: 1,
-		// TODO : MODIFY THIS
+		templateId: 2,
 		sender: params.sender,
-		to: params.to
+		to: params.to,
+		params: params.params
 	};
 	await apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
 		
@@ -23,32 +23,26 @@ export async function TransEmail(params) {
 		});
 
 		//reply thank you email on inquiry
-		replyEmail(params);
+		replyEmail(params, apiInstance);
 		console.log('API called successfully. New Inquiry received: ' + JSON.stringify(data));
-		return true;
 
 	}, function (error) {
 		toast.dismiss();
 		toast.error('Something Went Wrong !');
 		console.error(error);
-		return false;
 	});
-	//return false;
-
 }
 
-function replyEmail(templateParams) {
-	let apiInstance = new SibApiV3Sdk.SendSmtpEmail();
+function replyEmail(templateParams, apiInstance) {
 	let apiKey = apiInstance.authentications['apiKey'];
 
-	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_RUTU;
+	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_DEV;
 
 	let sendSmtpEmail = {
 		subject: templateParams.subject,
-		templateId: 1,
-		// TODO : MODIFY THIS
-		to: templateParams.sender,
-		params: { "customer_name": templateParams.to[0].name }
+		templateId: 3,
+		to: [templateParams.sender],
+		params: {"customer_name": templateParams.to[0].name},
 	};
 
 	debugger;
@@ -56,7 +50,7 @@ function replyEmail(templateParams) {
 		console.log('API called successfully. thank you email sent data: ' + JSON.stringify(data));
 
 		//Check if contact already exist in the system
-		getContact(templateParams.sender);
+		getContact(templateParams.sender.email);
 	}, function (error) {
 		console.error(error);
 	});
@@ -66,7 +60,7 @@ function getContact(identifier) {
 	let apiInstance = new SibApiV3Sdk.ContactsApi()
 	let apiKey = apiInstance.authentications['apiKey'];
 
-	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_RUTU;
+	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_DEV;
 
 	apiInstance.getContactInfo(identifier)
 		.then(function (data) {
@@ -88,7 +82,7 @@ function createContact(identifier) {
 	let apiInstance = new SibApiV3Sdk.ContactsApi();
 
 	let apiKey = apiInstance.authentications['apiKey'];
-	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_RUTU;
+	apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_DEV;
 	let createContact = new SibApiV3Sdk.CreateContact();
 
 	createContact.email = identifier;
@@ -98,8 +92,6 @@ function createContact(identifier) {
 	}, function (error) {
 		console.error(error);
 	});
-
-	return false;
 }
 
 export default TransEmail;

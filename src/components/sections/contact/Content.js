@@ -47,16 +47,17 @@ class Content extends Component {
 
         let apiKey = apiInstance.authentications['apiKey'];
         // TODO : MODIFY AFTER NRE REGISTRATION
-        apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY;
+        apiKey.apiKey = process.env.REACT_APP_SIB_API_KEY_DEV;
 
         let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
         sendSmtpEmail = {
-            subject: "{{params.subject}}",
-            templateId: 1,
+            subject: "Code On Us Inquiry",
+            templateId: 2,
             // TODO : MODIFY THIS
-            sender: { "name": this.state.name, "email": this.state.email },
-            to: [{ "email": "rutu@codeonus.com", "name": "Rutu Patel" }],
+            sender: {"name": this.state.name, "email": this.state.email},
+            to: [{"email": "connect@codeonus.com", "name": "Code On Us"}],
+            params: {"customer_name": this.state.name, "customer_email": this.state.email , "customer_contact": this.state.phone, "customer_message": this.state.message}
         };
         await TransEmail(sendSmtpEmail);
         this.setState({ isSubmitting: false })
